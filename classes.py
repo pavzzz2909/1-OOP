@@ -121,12 +121,12 @@ cool_reviewer2 = Reviewer('Some2', 'Body2')
 cool_reviewer2.courses_attached += ['Python']
 cool_reviewer2.courses_attached += ['Java']
 cool_reviewer2.rate_hw(best_student2, 'Python', 5)
-cool_reviewer2.rate_hw(best_student2, 'Python', 4)
+cool_reviewer2.rate_hw(best_student2, 'Python', 8)
 cool_reviewer2.rate_hw(best_student2, 'Python', 6)
-cool_reviewer2.rate_hw(best_student2, 'Python', 6)
+cool_reviewer2.rate_hw(best_student2, 'Python', 10)
 cool_reviewer2.rate_hw(best_student2, 'Python', 6)
 cool_reviewer2.rate_hw(best_student2, 'Java', 10)
-cool_reviewer2.rate_hw(best_student2, 'Java', 10)
+cool_reviewer2.rate_hw(best_student2, 'Java', 9)
 cool_reviewer2.rate_hw(best_student2, 'Java', 10)
 
 
@@ -138,3 +138,41 @@ print(cool_reviewer2)
 
 print(best_student>best_student2)
 print(cool_lecturer<cool_lecturer2)
+
+print("___________________________________")
+
+students = [best_student, best_student2]
+lecturers = [cool_lecturer, cool_lecturer2]
+course = 'Python'
+
+
+def aver_all_students(students,course):
+    sum_grades = 0
+    count_grades = 0
+    average_grades = 0
+    for student in students:
+        if course in student.grades:
+            sum_grades += sum(student.grades[course])
+            count_grades += len(student.grades[course])
+    if count_grades == 0:
+        average_grades = 0
+    else:
+        average_grades = sum_grades / count_grades
+    return average_grades
+
+def aver_all_lecturers(lecturers,course):
+    sum_grades = 0
+    count_grades = 0
+    average_grades = 0
+    for lecturer in lecturers:
+        if course in lecturer.grades:
+            sum_grades += sum(lecturer.grades[course])
+            count_grades += len(lecturer.grades[course])
+    if count_grades == 0:
+        average_grades = 0
+    else:
+        average_grades = sum_grades / count_grades
+    return average_grades
+    
+print(aver_all_lecturers(lecturers,course))
+print(aver_all_students(students,course))
